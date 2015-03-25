@@ -96,6 +96,10 @@ set cursorline
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
 " CSCOPE
-source ~/bin/.sources/cscope_maps.vim
+source ~/dev/dotfiles/.cscope_maps.vim
 
+" setting a 80-column mark and a 120-column limit zone
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn="80,".join(range(120,999),",")
 
