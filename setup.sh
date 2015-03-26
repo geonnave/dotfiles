@@ -34,6 +34,7 @@ do_link() {
 }
 
 # select only the dotfiles that are intended to be installed at home directory
+# this is ugly I know :Z
 for f in $(find . -maxdepth 1 | egrep -i "^\.\/\..*" | egrep -v "git|.swp|bashrc|cscope_maps.vim" | sed "s;^\.\/;;g"); do
 	do_link "$(pwd)/$f" "$HOME/$f"
 done
