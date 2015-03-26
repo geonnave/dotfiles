@@ -1,6 +1,6 @@
 #!/bin/bash
 
-why_did_i_come_to_exist="in the beginning, there were the darkness;\n
+why_did_i_come_to_exist="in the beginning, there was the darkness;\n
 there were shadows and only a bunch of bad-looking, anti-human terminal emulators to use;\n
 but then blessed tools came along, together with their respective dotfiles.\n
 \n
