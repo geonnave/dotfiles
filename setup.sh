@@ -30,23 +30,23 @@ do_link() {
 		mv "$2" "$HOME/.old_dotfiles/$bkp_file"
 	fi
 	[ ! -e "$2" ] && echo -e "linking file: $1 to $2\n" && ln -s "$1" "$2" && return 0
-	echo "skipping already existent file: $2" && return 1
+	echo -e "skipping already existent file: $2\n" && return 1
 }
 
 # select only the dotfiles that are intended to be installed at home directory
-for f in $(find . -maxdepth 1 | egrep -i "^\.\/\..*" | egrep -v "git|bash_profile|cscope_maps.vim" | sed "s;^\.\/;;g"); do
+for f in $(find . -maxdepth 1 | egrep -i "^\.\/\..*" | egrep -v "git|.swp|bashrc|cscope_maps.vim" | sed "s;^\.\/;;g"); do
 	do_link "$(pwd)/$f" "$HOME/$f"
 done
 
 [ ! -e $HOME/bin ] && mkdir $HOME/bin
 
-[ -e .bash_profile ] && do_link "$(pwd)/.bash_profile" "$HOME/bin/.bash_profile"
+[ -e .bashrc ] && do_link "$(pwd)/.bashrc" "$HOME/bin/.bashrc"
 if [ "$?" == "0" ]; then
 	# if do not exist, create a dummy one
-	[ ! -e $HOME/.bash_profile ] && touch $HOME/.bash_profile
-	# echo 'source $HOME/bin/.bash_profile' only if needed
-	if [ -z "$(grep -o "$HOME/bin/.bash_profile" $HOME/.bash_profile)" ]; then
-		echo -e "\nsource $HOME/bin/.bash_profile\n" >> $HOME/.bash_profile
+	[ ! -e $HOME/.bashrc ] && touch $HOME/.bashrc
+	# echo 'source $HOME/bin/.bashrc' only if needed
+	if [ -z "$(grep -o "\$HOME/bin/.bashrc" $HOME/.bashrc)" ]; then
+		echo -e "\nsource \$HOME/bin/.bashrc\n" >> $HOME/.bashrc
 	fi
 fi
 
