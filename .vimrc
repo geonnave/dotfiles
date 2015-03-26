@@ -6,7 +6,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " our plugins
+" for first installation, do:
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 Plugin 'gmarik/Vundle.vim'       " vundle
+
 Plugin 'flazz/vim-colorschemes'  " nice colors!
 Plugin 'jdevera/vim-opengrok-search'  " nice colors!
 
