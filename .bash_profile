@@ -1,8 +1,8 @@
 
 # load my exports
-source ${HOME}/bin/.exports
+[ -e ${HOME}/bin/.exports ] && source ${HOME}/bin/.exports
 
-source $HOME/bin/.cscopes
+[ -e ${HOME}/bin/.cscopes ] && source $HOME/bin/.cscopes
 
 # function cd_func
 # This function defines a 'cd' replacement function capable of keeping, 

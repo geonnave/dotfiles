@@ -74,7 +74,7 @@ augroup END
 "	au FileType tex let b:delimitMate_quotes = ""
 "	au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
 "	au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-augroup END
+"augroup END
 
 " vim ide end
 
