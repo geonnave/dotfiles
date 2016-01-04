@@ -4,6 +4,8 @@
 
 [ -e ${HOME}/bin/.cscopes ] && source $HOME/bin/.cscopes
 
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
 # function cd_func
 # This function defines a 'cd' replacement function capable of keeping, 
 # displaying and accessing history of visited directories, up to 10 entries.
@@ -112,7 +114,7 @@ navigate_from_home() {
 # by using this alias, jumping-back-from-home become as simples as ",, 2" :)
 alias ,,="navigate_from_home"
 
-PS1='\[\e[32m\]\u \[\e[33m\]\w\[\e[0m\]\n\@ \d \$ '
+#PS1='\[\e[32m\]\u \[\e[33m\]\w\[\e[0m\]\n\@ \d \$ '
 
 # aliases for Tmux
 alias tmux='tmux -2'
@@ -126,6 +128,7 @@ alias ev='vim ~/.vimrc'
 alias et='vim ~/.tmux.conf'
 
 export EDITOR=vim
+export VISUAL=vim
 
 # adb aliases
 alias alogcat="adb logcat -v time -b main -b radio -b system"
@@ -135,4 +138,9 @@ alias akeyevent="adb shell input keyevent"
 alias ainput="adb shell input"
 alias akill="adb kill-server"
 alias agetprop="adb shell getprop"
+
+alias csjava_here="find . -name '*.java' > cscope.files && cscope -b -q"
+
+[ ! "$(echo $PATH | grep tilda)" ] && export PATH=$HOME/bin/tilda/bin:$PATH
+[ ! "$(echo $PATH | grep elixir)" ] && export PATH=$HOME/bin/.sources/elixir/bin:$PATH
 
