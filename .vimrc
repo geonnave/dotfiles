@@ -24,7 +24,7 @@ Plugin 'vim-scripts/a.vim'
 
 "Plugin 'Raimondi/delimitMate'
 
-Plugin 'edkolev/tmuxline.vim'
+"Plugin 'edkolev/tmuxline.vim'
 
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -108,7 +108,7 @@ set cursorline
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
 " CSCOPE
-source ~/conf/dotfiles/.cscope_maps.vim
+source ~/dev/config/dotfiles/.cscope_maps.vim
 
 " setting a 80-column mark and a 120-column limit zone
 let &colorcolumn=join(range(81,999),",")

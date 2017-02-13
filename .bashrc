@@ -1,10 +1,6 @@
 
 # load my exports
-[ -e ${HOME}/bin/.exports ] && source ${HOME}/bin/.exports
-
-[ -e ${HOME}/bin/.cscopes ] && source $HOME/bin/.cscopes
-
-export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+[ ! "$(echo $PATH | grep node)" ] && export PATH=$HOME/bin/node/bin:$PATH
 
 # function cd_func
 # This function defines a 'cd' replacement function capable of keeping, 
@@ -141,6 +137,6 @@ alias agetprop="adb shell getprop"
 
 alias csjava_here="find . -name '*.java' > cscope.files && cscope -b -q"
 
-[ ! "$(echo $PATH | grep tilda)" ] && export PATH=$HOME/bin/tilda/bin:$PATH
-[ ! "$(echo $PATH | grep elixir)" ] && export PATH=$HOME/bin/.sources/elixir/bin:$PATH
+# avoid annoying accessibility bus GTK warning when opening emacs
+export NO_AT_BRIDGE=1
 
