@@ -1,6 +1,20 @@
 
 # load my exports
 [ ! "$(echo $PATH | grep node)" ] && export PATH=$HOME/bin/node/bin:$PATH
+[ ! "$(echo $PATH | grep zotero)" ] && export PATH=$HOME/bin/Zotero_linux-x86_64/:$PATH
+[ ! "$(echo $PATH | grep ngrok)" ] && export PATH=$HOME/bin/ngrok/:$PATH
+[ ! "$(echo $PATH | grep ex_doc)" ] && export PATH=$HOME/bin/ex_doc/bin/:$PATH
+[ ! "$(echo $PATH | grep studio)" ] && export PATH=$HOME/bin/android-studio/bin/:$PATH
+[ ! "$(echo $PATH | grep jdk)" ] && export PATH=$HOME/bin/jdk1.8.0_211/bin/:$PATH
+
+[ ! "$(echo $PATH | grep pycharm)" ] && export PATH=$HOME/bin/pycharm-community-2017.2.3/bin/:$PATH
+[ ! "$(echo $PATH | grep xtensa-esp32)" ] && export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
+#[ ! "$(echo $PATH | grep anaconda3)" ] && export PATH=$HOME/anaconda3/bin/:$PATH
+
+# Android stuff
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # function cd_func
 # This function defines a 'cd' replacement function capable of keeping, 
@@ -89,8 +103,10 @@ navigate_up() {
 # by using this alias, going back become as simples as ".. 2" :)
 alias ..="navigate_up"
 
-# function navigate_from_home() -> navigate down N directories counting from your $HOME directory, considering your current directory
-# param $1 -> must be a number, indicate how many directories to navigate down; if omitted, will be treated as 0
+# function navigate_from_home() -> navigate down N directories counting from
+# your $HOME directory, considering your current directory
+# param $1 -> must be a number, indicate how many directories
+# to navigate down; if omitted, will be treated as 0
 # e.g.: 
 #  $ pwd
 # > /home/mithrandil/middle_earth/shire/hobbits/bilbo/ring
@@ -139,4 +155,20 @@ alias csjava_here="find . -name '*.java' > cscope.files && cscope -b -q"
 
 # avoid annoying accessibility bus GTK warning when opening emacs
 export NO_AT_BRIDGE=1
+
+# https://github.com/asdf-vm/asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+source /usr/share/autojump/autojump.sh
+
+alias python=python3
+
+export IDF_PATH=~/esp/esp-idf
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

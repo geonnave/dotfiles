@@ -36,6 +36,11 @@ Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'elixir-lang/vim-elixir'
 
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -74,6 +79,7 @@ augroup mySyntastic
 	au!
 	au FileType tex let b:syntastic_mode = "passive"
 augroup END
+let g:syntastic_python_checkers = ['python3']
 
 " - delimitMate
 "let delimitMate_expand_cr=1
@@ -116,4 +122,10 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn="80,".join(range(120,999),",")
 
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype jsx setlocal ts=2 sts=2 sw=2
+
+let vim_markdown_preview_github=1
+
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
