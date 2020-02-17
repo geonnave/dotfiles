@@ -1,11 +1,14 @@
 
 # load my exports
+export PATH=/snap/bin:$PATH
 [ ! "$(echo $PATH | grep node)" ] && export PATH=$HOME/bin/node/bin:$PATH
 [ ! "$(echo $PATH | grep zotero)" ] && export PATH=$HOME/bin/Zotero_linux-x86_64/:$PATH
 [ ! "$(echo $PATH | grep ngrok)" ] && export PATH=$HOME/bin/ngrok/:$PATH
 [ ! "$(echo $PATH | grep ex_doc)" ] && export PATH=$HOME/bin/ex_doc/bin/:$PATH
-[ ! "$(echo $PATH | grep studio)" ] && export PATH=$HOME/bin/android-studio/bin/:$PATH
+[ ! "$(echo $PATH | grep studio)" ] && export PATH=$HOME/bin/android-studio-ide-183.5692245-linux/android-studio/bin/:$PATH
 [ ! "$(echo $PATH | grep jdk)" ] && export PATH=$HOME/bin/jdk1.8.0_211/bin/:$PATH
+[ ! "$(echo $PATH | grep flutter)" ] && export PATH=$HOME/bin/flutter/bin/:$PATH
+[ ! "$(echo $PATH | grep standard-notes)" ] && export PATH=$HOME/bin/standard-notes/:$PATH
 
 [ ! "$(echo $PATH | grep pycharm)" ] && export PATH=$HOME/bin/pycharm-community-2017.2.3/bin/:$PATH
 [ ! "$(echo $PATH | grep xtensa-esp32)" ] && export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
@@ -13,7 +16,9 @@
 
 # Android stuff
 export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # function cd_func
@@ -74,58 +79,6 @@ cd_func () {
 }
 alias cd=cd_func
 
-# function navigate_up -> navigate up N directories
-# param $1 -> must be a number, indicate how many directories to navigate up; if omitted, navigate up only one directory
-# e.g.: 
-#  $ pwd
-# > /home/mithrandil/middle_earth/shire/hobbits/bilbo/ring
-#  $ navigate_up 2
-# > /home/mithrandil/middle_earth/shire/hobbits
-navigate_up() {
-	# if there aren't parameters, navigate up only 1 directory and stop
-	[ -z "$1" ] && cd .. && return 0
-
-	# filter parameter $1, should contains only numbers
-	non_number_chars=$( echo $1 | sed "s/[0-9]*//g" )
-	if [ ! -z "$non_number_chars" ]; then
-		echo -e "You must specify a number of directories to navigate up"
-		return 1
-	fi
-
-	dirs_up=
-	for i in $(seq $1); do
-		dirs_up+="../"
-	done
-
-	cd $dirs_up
-	return 0
-}
-# by using this alias, going back become as simples as ".. 2" :)
-alias ..="navigate_up"
-
-# function navigate_from_home() -> navigate down N directories counting from
-# your $HOME directory, considering your current directory
-# param $1 -> must be a number, indicate how many directories
-# to navigate down; if omitted, will be treated as 0
-# e.g.: 
-#  $ pwd
-# > /home/mithrandil/middle_earth/shire/hobbits/bilbo/ring
-#  $ navigate_from_up 2
-# > /home/mithrandil/middle_earth/shire
-navigate_from_home() {
-	[ "$( echo $1 | sed "s/[0-9]*//g" )" ] && echo wrong usage && return 1 || n=$1
-
-	a=( $(echo $(pwd) | sed "s;\/; ;g") )
-
-	((n+=2))
-	dir=$(echo "${a[@]:0:$n}" | sed "s; ;\/;g")
-	cd /$dir
-
-	return 0
-}
-# by using this alias, jumping-back-from-home become as simples as ",, 2" :)
-alias ,,="navigate_from_home"
-
 #PS1='\[\e[32m\]\u \[\e[33m\]\w\[\e[0m\]\n\@ \d \$ '
 
 # aliases for Tmux
@@ -157,12 +110,12 @@ alias csjava_here="find . -name '*.java' > cscope.files && cscope -b -q"
 export NO_AT_BRIDGE=1
 
 # https://github.com/asdf-vm/asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+#. $HOME/.asdf/asdf.sh
+#. $HOME/.asdf/completions/asdf.bash
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-source /usr/share/autojump/autojump.sh
+#source /usr/share/autojump/autojump.sh
 
 alias python=python3
 
@@ -172,3 +125,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/geovane/dev/stuff/tmp/indy-sdk/libindy/target/debug/
+
+source $HOME/dev/config/dotfiles/fastnav.sh

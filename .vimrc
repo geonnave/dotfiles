@@ -1,4 +1,6 @@
 
+" install Vundle from https://github.com/VundleVim/Vundle.vim
+
 set nocompatible
 
 filetype off
@@ -11,7 +13,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'       " vundle
 
 Plugin 'flazz/vim-colorschemes'  " nice colors!
-Plugin 'jdevera/vim-opengrok-search'  " nice colors!
+Plugin 'jdevera/vim-opengrok-search'
 
 Plugin 'bling/vim-airline'
 
@@ -40,6 +42,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
 Plugin 'JamshedVesuna/vim-markdown-preview'
+
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
 
@@ -129,3 +133,13 @@ let vim_markdown_preview_github=1
 
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
+" easymotion config
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+" (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
