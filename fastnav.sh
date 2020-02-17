@@ -4,17 +4,17 @@
 # Copyright (c) 2020 Geovane Fedrecheski
 # https://choosealicense.com/licenses/mit/
 
-# function go_up_n -> navigate up N directories
+# function fastnav_up -> navigate up N directories
 # param $1
 #   must be a number, indicate how many directories to navigate up
 #   if omitted, navigate up only one directory
 # e.g.: 
 #  $ pwd
 # > /home/mithrandil/middle_earth/shire/hobbits/bilbo/ring
-#  $ go_up_n 2
+#  $ fastnav_up 2
 # > /home/mithrandil/middle_earth/shire/hobbits
 # 
-go_up_n() {
+fastnav_up() {
     # if no parameters, navigate up only 1 directory and stop
     [ -z "$1" ] && cd .. && return 0
 
@@ -30,9 +30,9 @@ go_up_n() {
     return 0
 }
 # by using this alias, going back become as simples as ".. 2" :)
-alias ..="go_up_n"
+alias ..="fastnav_up"
 
-# function go_down_n_from_home() -> navigate down N directories,
+# function fastnav_down() -> navigate down N directories,
 # counting from $HOME with respect to the working directory
 # param $1
 #   must be a number, indicate how many directories to navigate down
@@ -42,7 +42,7 @@ alias ..="go_up_n"
 # > /home/mithrandil/middle_earth/shire/hobbits/bilbo/ring
 #  $ navigate_from_up 1
 # > /home/mithrandil/middle_earth
-go_down_n_from_home() {
+fastnav_down() {
     [ "$( echo $1 | sed "s/[0-9]*//g" )" ] && echo "arg \$1 must be a number" && return 1 || n=$1
 
     # separate path components into a string array
@@ -55,4 +55,4 @@ go_down_n_from_home() {
     return 0
 }
 # by using this alias, going up counting from home become as simples as ",, 1" :)
-alias ,,="go_down_n_from_home"
+alias ,,="fastnav_down"
