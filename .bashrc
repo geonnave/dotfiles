@@ -1,18 +1,29 @@
 
 # load my exports
+[ ! "$(echo $PATH | grep bin/bin)" ] && export PATH=$HOME/bin/bin/:$PATH
+
+export PATH=$PATH:/usr/local/go/bin
+
 export PATH=/snap/bin:$PATH
 [ ! "$(echo $PATH | grep node)" ] && export PATH=$HOME/bin/node/bin:$PATH
-[ ! "$(echo $PATH | grep zotero)" ] && export PATH=$HOME/bin/Zotero_linux-x86_64/:$PATH
+[ ! "$(echo $PATH | grep zotero)" ] && export PATH=$HOME/bin/Zotero-5.0.89_linux-x86_64/Zotero_linux-x86_64/:$PATH
 [ ! "$(echo $PATH | grep ngrok)" ] && export PATH=$HOME/bin/ngrok/:$PATH
 [ ! "$(echo $PATH | grep ex_doc)" ] && export PATH=$HOME/bin/ex_doc/bin/:$PATH
 [ ! "$(echo $PATH | grep studio)" ] && export PATH=$HOME/bin/android-studio-ide-183.5692245-linux/android-studio/bin/:$PATH
 [ ! "$(echo $PATH | grep jdk)" ] && export PATH=$HOME/bin/jdk1.8.0_211/bin/:$PATH
 [ ! "$(echo $PATH | grep flutter)" ] && export PATH=$HOME/bin/flutter/bin/:$PATH
-[ ! "$(echo $PATH | grep standard-notes)" ] && export PATH=$HOME/bin/standard-notes/:$PATH
+
+[ ! "$(echo $PATH | grep asdf)" ] && . $HOME/.asdf/asdf.sh
+[ ! "$(echo $PATH | grep asdf)" ] && . $HOME/.asdf/completions/asdf.bash
 
 [ ! "$(echo $PATH | grep pycharm)" ] && export PATH=$HOME/bin/pycharm-community-2017.2.3/bin/:$PATH
 [ ! "$(echo $PATH | grep xtensa-esp32)" ] && export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
 #[ ! "$(echo $PATH | grep anaconda3)" ] && export PATH=$HOME/anaconda3/bin/:$PATH
+
+[ ! "$(echo $PATH | grep cmake)" ] && export PATH=$HOME/bin/cmake-3.18.0-rc2-Linux-x86_64/bin/:$PATH
+
+#export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/"
 
 # Android stuff
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -109,10 +120,6 @@ alias csjava_here="find . -name '*.java' > cscope.files && cscope -b -q"
 # avoid annoying accessibility bus GTK warning when opening emacs
 export NO_AT_BRIDGE=1
 
-# https://github.com/asdf-vm/asdf
-#. $HOME/.asdf/asdf.sh
-#. $HOME/.asdf/completions/asdf.bash
-
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 #source /usr/share/autojump/autojump.sh
@@ -125,6 +132,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/geovane/dev/stuff/tmp/indy-sdk/libindy/target/debug/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/geovane/dev/tmp/test-indy/indy-sdk/libindy/target/debug
 
 source $HOME/dev/config/dotfiles/fastnav.sh
+source $HOME/dev/config/dotfiles/payattention.sh
+
+export MOZ_USE_XINPUT2=1
+
+export PATH=$PATH:/usr/local/go/bin
+

@@ -45,6 +45,8 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 
 Plugin 'easymotion/vim-easymotion'
 
+Plugin 'tomlion/vim-solidity'
+
 call vundle#end()
 
 filetype plugin indent on
