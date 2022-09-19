@@ -34,12 +34,8 @@ Plugin 'vim-scripts/a.vim'
 
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
 Plugin 'vim-ruby/vim-ruby'
-
 Plugin 'elixir-lang/vim-elixir'
-
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
